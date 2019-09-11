@@ -1,9 +1,16 @@
 import React from 'react';
-
+import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
+import {carReducer} from './reducers/carReducer.js'
+import { Provider } from 'react-redux';
+
+ // STEP 1 - import createStore, and create a store by passing in a reducer
+
+const store = createStore(carReducer);
 
 const App = () => {
   const state = {
@@ -31,7 +38,10 @@ const App = () => {
     // dipsatch an action here to add an item
   };
 
-  return (
+// STEP 2 - import Provider, wrap the provider component around <App />
+// STEP 2a - pass the newly created store into the proivder's store prop
+    return (
+    <Provider store={store}>
     <div className="boxes">
       <div className="box">
         <Header car={state.car} />
@@ -42,6 +52,7 @@ const App = () => {
         <Total car={state.car} additionalPrice={state.additionalPrice} />
       </div>
     </div>
+    </Provider>
   );
 };
 
