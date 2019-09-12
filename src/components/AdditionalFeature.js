@@ -4,17 +4,17 @@ import { addFeatureAC } from '../actions/index.js'
 
 const AdditionalFeature = props => {
  
-  const addFeature = e => {
-e.preventDefault();
-props.addFeatureAC()
+//   const addFeature = e => {
+// e.preventDefault();
+// props.addFeatureAC()
 
-  }
+//   }
 
 
   return (
     <li>
       {/* Add an onClick that will let you add a feature to your car */}
-      <button className="button" onClick={addFeature}>Add this</button>
+      <button className="button" onClick={()=> props.addFeatureAC (props.feature)}>Add this</button>
       {props.feature.name} (+{props.feature.price})
     </li>
   );

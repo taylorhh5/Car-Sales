@@ -28,13 +28,17 @@ export const carReducer = (state = initialState, action) => {
       console.log('Is the action getting here????');
       return {
         ...state, 
-        car: {
-          price: state.car.price,
-        features: [...state.car.features, action.payload]
-        }
-        
+        car: {...state.car,
+          price: state.car.price + action.payload.price,
+        features:[...state.car.features + action.payload]
+
+        },
+        store:  state.store.filter(item => 
+          item )
         //if feature clicked, need to add feature to car
       };
+      // list: state.list.filter(todo =>
+      //   !todo.completed)
   
       case REMOVE_FEATURE:
       console.log('Is the action getting here????');
@@ -42,8 +46,7 @@ export const carReducer = (state = initialState, action) => {
         ...state, 
       
         }
-        
-        //if feature clicked, need to add feature to car
+             //if feature clicked, need to remove feature from car
       
       
   
