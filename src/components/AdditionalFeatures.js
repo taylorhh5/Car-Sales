@@ -2,13 +2,13 @@ import React from 'react';
 import AdditionalFeature from './AdditionalFeature';
 import { connect } from 'react-redux';
 
-const AdditionalFeatures = ({store}) => {
+const AdditionalFeatures =props => {
   return (
     <div className="content">
       <h4>Additional Features</h4>
-      {store.length ? (
+      {props.store.length ? (
         <ol type="1">
-          {store.map(item => (
+          {props.store.map(item => (
             <AdditionalFeature key={item.id} feature={item} />
           ))}
         </ol>
@@ -23,7 +23,7 @@ const mapStateToProps = state => {
   console.log('mSTP state:', state);
   return {
     
-    store:state.store
+    store:state.store,  
   
   };
 };
